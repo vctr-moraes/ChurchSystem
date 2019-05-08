@@ -8,10 +8,19 @@ import java.util.Date;
  */
 public class Doacao {
     
+    private int codigo;
     private Date data;
     private float quantia;
     private Membro membro;
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     public Date getData() {
         return data;
     }
@@ -35,5 +44,4 @@ public class Doacao {
     public void setMembro(Membro membro) {
         this.membro = membro;
     }
-
 }

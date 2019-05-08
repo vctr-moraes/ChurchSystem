@@ -6,9 +6,18 @@ package dominio;
  */
 public class Funcao {
     
+    private int codigo;
     private String descricao;
     private Membro membro;
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getDescricao() {
         return descricao;
     }
@@ -24,5 +33,4 @@ public class Funcao {
     public void setMembro(Membro membro) {
         this.membro = membro;
     }
-        
 }

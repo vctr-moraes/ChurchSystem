@@ -80,5 +80,4 @@ public class Membro {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
 }
