@@ -11,7 +11,6 @@ public class Agenda {
     private int codigo;
     private String descricao;
     private Date data;
-    private Membro responsavel;
     private String local;
     private Membro membro;
     
@@ -37,14 +36,6 @@ public class Agenda {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    public Membro getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Membro responsavel) {
-        this.responsavel = responsavel;
     }
 
     public String getLocal() {
