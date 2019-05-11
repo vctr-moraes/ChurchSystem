@@ -48,5 +48,6 @@
         <br>
         
         <p>Membro cadastrado com sucesso!!!</p>
+        <a href="../index.xhtml">Voltar</a>
     </body>
 </html>

@@ -41,5 +41,6 @@
         <br>
         
         <p>Doação cadastrada com sucesso!!!</p>
+        <a href="../index.xhtml">Voltar</a>
     </body>
 </html>

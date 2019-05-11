@@ -24,6 +24,7 @@
         <!-- Teste de impressão na tela -->
         Descrição: <%=descricao%> <br>
         
-        <p>Função cadastrada com sucesso!!!<p> 
+        <p>Função cadastrada com sucesso!!!</p>
+        <a href="../index.xhtml">Voltar</a>
     </body>
 </html>

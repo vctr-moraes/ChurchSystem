@@ -29,5 +29,6 @@
             //agenda.setMembro(responsavel);
             agenda.setLocal(local);
         %>
+        <a href="../index.xhtml">Voltar</a>
     </body>
 </html>
