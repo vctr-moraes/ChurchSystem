@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +7,7 @@
         <title>Cadastro de Membros</title>
     </head>
     <body>
-        <h1>Cadastro de Membros</h1>
+        <h1>Cadastrar um membro</h1>
         <form action="salvar.jsp" name="formCadastro" method="post">
             <label>Nome</label>
             <input type="text" name="nome" id="fnome" value=""> <br>
