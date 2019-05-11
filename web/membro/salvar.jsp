@@ -48,6 +48,5 @@
         <br>
         
         <p>Membro cadastrado com sucesso!!!</p>
-        
     </body>
 </html>

@@ -24,7 +24,6 @@
         <!-- Teste de impressão na tela -->
         Descrição: <%=descricao%> <br>
         
-        <p>Grupo cadastrado com sucesso!!!<p>
-            
+        <p>Grupo cadastrado com sucesso!!!<p> 
     </body>
 </html>
