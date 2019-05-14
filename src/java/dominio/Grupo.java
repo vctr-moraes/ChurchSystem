@@ -5,7 +5,7 @@ package dominio;
  * @author victor
  */
 public class Grupo {
-    
+
     private int codigo;
     private String descricao;
 
@@ -16,7 +16,7 @@ public class Grupo {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }

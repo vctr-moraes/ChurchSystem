@@ -5,7 +5,7 @@ package dominio;
  * @author victor
  */
 public class Funcao {
-    
+
     private int codigo;
     private String descricao;
     private Membro membro;
@@ -17,7 +17,7 @@ public class Funcao {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }

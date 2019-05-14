@@ -11,11 +11,11 @@
     </head>
     <body>
         <h1>Lista de funções</h1>
-        
+
         <%
             ArrayList<Funcao> funcoes = FuncaoBD.listar();
-            
-            for(int i = 0; i < funcoes.size(); i++){
+
+            for (int i = 0; i < funcoes.size(); i++) {
                 Funcao cadaFuncao = funcoes.get(i);
                 out.println(cadaFuncao.getDescricao());
         %>

@@ -11,11 +11,11 @@
     </head>
     <body>
         <h1>Agenda</h1>
-        
+
         <%
             ArrayList<Agenda> agendas = AgendaBD.listar();
-            
-            for(int i = 0; i < agendas.size(); i++){
+
+            for (int i = 0; i < agendas.size(); i++) {
                 Agenda cadaAgenda = agendas.get(i);
                 out.println(cadaAgenda.getData());
                 out.println(cadaAgenda.getDescricao());

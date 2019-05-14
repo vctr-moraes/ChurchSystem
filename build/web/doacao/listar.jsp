@@ -11,11 +11,11 @@
     </head>
     <body>
         <h1>Lista de doações</h1>
-        
+
         <%
             ArrayList<Doacao> doacoes = DoacaoBD.listar();
-            
-            for(int i = 0; i < doacoes.size(); i++){
+
+            for (int i = 0; i < doacoes.size(); i++) {
                 Doacao cadaDoacao = doacoes.get(i);
                 out.println(cadaDoacao.getCodigo());
                 out.println(cadaDoacao.getData());

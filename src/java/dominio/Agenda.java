@@ -7,17 +7,17 @@ import java.util.Date;
  * @author victor
  */
 public class Agenda {
-    
+
     private int codigo;
     private String descricao;
     private Date data;
     private String local;
     private Membro membro;
-    
+
     public int getCodigo() {
         return codigo;
     }
-    
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }

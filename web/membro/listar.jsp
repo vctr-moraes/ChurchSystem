@@ -11,11 +11,11 @@
     </head>
     <body>
         <h1>Lista de membros</h1>
-        
+
         <%
             ArrayList<Membro> membros = MembroBD.listar();
-            
-            for(int i = 0; i < membros.size(); i++){
+
+            for (int i = 0; i < membros.size(); i++) {
                 Membro cadaMembro = membros.get(i);
                 out.println(cadaMembro.getMatricula());
                 out.println(cadaMembro.getNome());

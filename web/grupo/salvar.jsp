@@ -11,19 +11,19 @@
     <body>
         <%
             String descricao = request.getParameter("descricao");
-            
+
             Grupo grupo = new Grupo();
-            
+
             grupo.setDescricao(descricao);
-            
+
             GrupoBD.inserir(grupo);
         %>
-        
+
         <br>
-        
+
         <!-- Teste de impressão na tela -->
         Descrição: <%=descricao%> <br>
-        
+
         <p>Grupo cadastrado com sucesso!!!</p>
         <a href="../index.xhtml">Voltar</a>
     </body>

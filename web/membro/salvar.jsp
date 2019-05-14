@@ -17,36 +17,36 @@
             String telefone = request.getParameter("telefone");
             String dtNascimento = request.getParameter("dtNascimento");
             String batizado = request.getParameter("batizado");
-            
+
             //Convertendo string para data
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             Date data = formato.parse(dtNascimento);
-            
+
             //Convertendo string para boolean
             Boolean batizo = Boolean.getBoolean(batizado);
-            
+
             Membro membro = new Membro();
-            
+
             membro.setNome(nome);
             membro.setCpf(cpf);
             membro.setTelefone(telefone);
             membro.setDataNascimento(data);
             membro.setBatizado(batizo);
-            
+
             MembroBD.inserir(membro);
         %>
-        
+
         <br>
-        
+
         <!--Teste de impressão na tela -->
         Nome:                <%=nome%> <br>
         CPF:                 <%=cpf%> <br>
         Telefone:            <%=telefone%> <br>
         Data de Nascimento:  <%=dtNascimento%> <br>
         Batizado:            <%=batizado%> <br>
-        
+
         <br>
-        
+
         <p>Membro cadastrado com sucesso!!!</p>
         <a href="../index.xhtml">Voltar</a>
     </body>

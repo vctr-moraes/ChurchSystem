@@ -11,16 +11,16 @@
     </head>
     <body>
         <h1>Lista de grupos</h1>
-        
+
         <%
             ArrayList<Grupo> grupos = GrupoBD.listar();
-            
-            for(int i = 0; i < grupos.size(); i++){
+
+            for (int i = 0; i < grupos.size(); i++) {
                 Grupo cadaGrupo = grupos.get(i);
                 out.println(cadaGrupo.getDescricao());
         %>
         <a href="excluir.jsp?codigo=<%=cadaGrupo.getCodigo()%>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
-        <%    
+        <%
             }
         %>
     </body>

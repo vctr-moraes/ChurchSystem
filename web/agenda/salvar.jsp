@@ -16,14 +16,13 @@
             String dataAgenda = request.getParameter("data");
             String responsavel = request.getParameter("responsavel");
             String local = request.getParameter("local");
-            
+
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             Date data = formato.parse(responsavel);
-            
+
             //Converter uma string com o nome do Responsável para o objeto Responsavel
-            
             Agenda agenda = new Agenda();
-            
+
             agenda.setDescricao(descricao);
             agenda.setData(data);
             //agenda.setMembro(responsavel);

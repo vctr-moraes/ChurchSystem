@@ -7,7 +7,7 @@ import java.util.Date;
  * @author victor
  */
 public class Doacao {
-    
+
     private int codigo;
     private Date data;
     private float quantia;
@@ -20,7 +20,7 @@ public class Doacao {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public Date getData() {
         return data;
     }

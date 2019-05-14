@@ -7,7 +7,7 @@ import java.util.Date;
  * @author victor
  */
 public class Membro {
-    
+
     private int matricula;
     private String nome;
     private String cpf;
