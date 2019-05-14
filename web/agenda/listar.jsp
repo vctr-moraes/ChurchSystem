@@ -21,6 +21,9 @@
                 out.println(cadaAgenda.getDescricao());
                 out.println(cadaAgenda.getLocal());
                 out.println(cadaAgenda.getMembro());
+        %>
+        <a href="excluir.jsp?codigo=<%=cadaAgenda.getCodigo()%>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+        <%
             }
         %>
     </body>

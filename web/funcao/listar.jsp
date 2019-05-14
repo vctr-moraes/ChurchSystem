@@ -18,6 +18,9 @@
             for(int i = 0; i < funcoes.size(); i++){
                 Funcao cadaFuncao = funcoes.get(i);
                 out.println(cadaFuncao.getDescricao());
+        %>
+        <a href="excluir.jsp?codigo=<%=cadaFuncao.getCodigo()%>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+        <%
             }
         %>
     </body>

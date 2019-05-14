@@ -21,6 +21,9 @@
                 out.println(cadaDoacao.getData());
                 out.println(cadaDoacao.getMembro());
                 out.println(cadaDoacao.getQuantia());
+        %>
+        <a href="excluir.jsp?codigo=<%=cadaDoacao.getCodigo()%>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+        <%
             }
         %>
     </body>

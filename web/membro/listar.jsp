@@ -23,6 +23,9 @@
                 out.println(cadaMembro.getDataNascimento());
                 out.println(cadaMembro.getTelefone());
                 out.println(cadaMembro.getDataMatricula());
+        %>
+        <a href="excluir.jsp?matricula=<%=cadaMembro.getMatricula()%>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+        <%
             }
         %>
     </body>
