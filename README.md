@@ -9,6 +9,14 @@ Trata-se de um sistema Web desenvolvido em camadas com JavaServer Faces.
   <img  src="https://raw.githubusercontent.com/vctr-moraes/church-management-system/master/Diagrama%20de%20classes.jpg" style="max-width:100%;"> 
 </p>
 
+<h2>Diagrama entidade-relacionamento</h2>
+
+<p align="center">
+  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20ER.png" style="max-width:100%;"> 
+</p>
+
+
+
 <br><br><br>
 
 <p align="center"> – – – – – – Projeto em desenvolvimento – – – – – – </p>
