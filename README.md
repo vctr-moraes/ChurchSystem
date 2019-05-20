@@ -1,7 +1,6 @@
 # Church Management System
-Sistema para gestão de recursos humanos em uma instituição religiosa.
-Irá gerenciar informações básicas como membros, funções, doações, dentre outros.<br>
-Trata-se de um sistema Web desenvolvido em camadas com JavaServer Faces.
+Sistema Web desenvolvido em camadas com JavaServer Faces para gestão de recursos humanos em uma instituição religiosa.
+Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.<br>
 
 <h2>Diagrama de classes</h2>
 
