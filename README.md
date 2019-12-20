@@ -1,5 +1,6 @@
 # Church Management System
-Sistema Web desenvolvido em camadas com JavaServer Faces para gestão de recursos humanos em uma instituição religiosa.
+Sistema Web desenvolvido em ASP.NET Core 3.1 sobre uma single-page application com React.js.
+
 Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.<br>
 
 <h2>Diagrama de classes</h2>
