@@ -1,7 +1,10 @@
-# Church Management System
+# ⛪ Church Management System
 Aplicação Web para gestão de recursos humanos em uma instituição religiosa, escrito em C# sobre um projeto Razor Pages ASP.NET Core 3.1.
 
 Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.<br>
+
+### Tecnologias utilizadas
+* ASP.NET Core, C#, HTML, CSS, Javascript, Bootstrap, SQL.
 
 <h2>Diagrama de classes</h2>
 
