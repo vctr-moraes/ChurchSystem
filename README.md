@@ -1,18 +1,18 @@
 # Church Management System
-Sistema Web desenvolvido em ASP.NET Core 3.1 sobre uma single-page application com React.js.
+Aplicação Web para gestão de recursos humanos em uma instituição religiosa, escrito em C# sobre um projeto Razor Pages ASP.NET Core 3.1.
 
 Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.<br>
 
 <h2>Diagrama de classes</h2>
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/church-management-system/master/Diagrama%20de%20classes.jpg" style="max-width:100%;"> 
+  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20de%20classes.jpg?token=ALYRBX2DKNQHFPOUU4VTSF26NQ6N4" style="max-width:100%;"> 
 </p>
 
 <h2>Diagrama entidade-relacionamento</h2>
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20ER.png" style="max-width:100%;"> 
+  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20ER.png?token=ALYRBX63CAGBGT7SKLD7M4K6NQ6N6" style="max-width:100%;"> 
 </p>
 
 
