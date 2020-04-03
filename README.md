@@ -9,13 +9,13 @@ Irá gerenciar informações básicas como membros, funções, doações, agenda
 #### Diagrama de classes
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20de%20classes.jpg?token=ALYRBX4JHRLVRPNIA3QTV226Q2USG" style="max-width:100%;"> 
+  <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20de%20classes.jpg?token=ALYRBX4JHRLVRPNIA3QTV226Q2USG" style="max-width:100%;"> 
 </p>
 
 #### Diagrama entidade-relacionamento
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20ER.png?token=ALYRBX347H2VHA7IJIFBPWK6Q2UR4" style="max-width:100%;"> 
+  <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20ER.png" style="max-width:100%;"> 
 </p>
 
 
