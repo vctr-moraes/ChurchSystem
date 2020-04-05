@@ -29,8 +29,8 @@ Aplicação Web para gestão de recursos humanos em uma instituição religiosa,
   <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20ER.png" style="max-width:100%;"> 
 </p>
 
+### Este projeto está sob a licença MIT. Consulte a <a href="https://github.com/vctr-moraes/ChurchSystem/blob/master/LICENSE" target="_blank">LICENÇA</a> para obter mais informações.
 
-
-<br><br><br>
+<br>
 
 <p align="center"> – – – – – – Projeto em desenvolvimento – – – – – – </p>
