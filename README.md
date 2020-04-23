@@ -33,4 +33,5 @@ Web application for human resources management in a religious institution, writt
 
 <br>
 
-<p align="center"> – – – – – – Project under development – – – – – – </p>
+<p align="center">★★★</p>
+<p align="center">Project under development...</p>
