@@ -1,9 +1,9 @@
 # ⛪ Church Management System
-Aplicação Web para gestão de recursos humanos em uma instituição religiosa, escrito em C# sobre um projeto ASP.NET Core MVC 3.1. Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.
+Web application for human resources management in a religious institution, written in C# on an ASP.NET Core MVC 3.1 project. It will manage basic information such as members, roles, donations, schedules, among others.
 
-> *O projeto tem por objetivo ser utilizado para estudos e o ensino de programação orientada objeto, servindo como modelo para a implementação de sistemas com arquitetura em camadas, utilizando o padrão model-view-controller.*
+> *The project aims to be used for studies and teaching object-oriented programming, serving as a model for the implementation of systems with layered architecture, using the model-view-controller pattern.*
 
-### Tecnologias utilizadas
+### Technologies used
 * ASP.NET Core
 * C#
 * HTML
@@ -12,25 +12,25 @@ Aplicação Web para gestão de recursos humanos em uma instituição religiosa,
 * Bootstrap
 * SQL
 
-### Arquitetura
+### Architecture
 * **App:** Controllers, Views
 * **Business:** Models, Interfaces, Services, Notifications, Validations
 * **Data:** Context, Mappings, Repository
 
-### Diagrama de classes
+### Class diagram
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20de%20classes.jpg?token=ALYRBX4JHRLVRPNIA3QTV226Q2USG" style="max-width:100%;"> 
 </p>
 
-### Diagrama entidade-relacionamento
+### Entity-relationship diagram
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20ER.png" style="max-width:100%;"> 
 </p>
 
-### Este projeto está sob a licença MIT. Consulte a <a href="https://github.com/vctr-moraes/ChurchSystem/blob/master/LICENSE" target="_blank">LICENÇA</a> para obter mais informações.
+### This project is under the MIT license. Consult the <a href="https://github.com/vctr-moraes/ChurchSystem/blob/master/LICENSE" target="_blank">LICENSE</a> for more information.
 
 <br>
 
-<p align="center"> – – – – – – Projeto em desenvolvimento – – – – – – </p>
+<p align="center"> – – – – – – Project under development – – – – – – </p>
