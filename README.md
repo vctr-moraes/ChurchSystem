@@ -1,25 +1,37 @@
-# ⛪ Church Management System
-Aplicação Web para gestão de recursos humanos em uma instituição religiosa, escrito em C# sobre um projeto Razor Pages ASP.NET Core 3.1.
+# Church Management System
+Web application for human resources management in a religious institution, written in C# on an ASP.NET Core MVC 3.1 project. It will manage basic information such as members, roles, donations, schedules, among others.
 
-Irá gerenciar informações básicas como membros, funções, doações, agendas, dentre outros.<br>
+> *The project aims to be used for studies and teaching object-oriented programming, serving as a model for the implementation of systems with layered architecture, using the model-view-controller pattern.*
 
-### Tecnologias utilizadas
-* ASP.NET Core, C#, HTML, CSS, Javascript, Bootstrap, SQL.
+### Technologies used
+* ASP.NET Core
+* C#
+* HTML
+* CSS
+* Javascript
+* Bootstrap
+* SQL
 
-<h2>Diagrama de classes</h2>
+### Architecture
+* **App:** Controllers, Views
+* **Business:** Models, Interfaces, Services, Notifications, Validations
+* **Data:** Context, Mappings, Repository
+
+### Class diagram
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20de%20classes.jpg?token=ALYRBX2DKNQHFPOUU4VTSF26NQ6N4" style="max-width:100%;"> 
+  <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20de%20classes.jpg?token=ALYRBX4JHRLVRPNIA3QTV226Q2USG" style="max-width:100%;"> 
 </p>
 
-<h2>Diagrama entidade-relacionamento</h2>
+### Entity-relationship diagram
 
 <p align="center">
-  <img  src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/Diagrama%20ER.png?token=ALYRBX63CAGBGT7SKLD7M4K6NQ6N6" style="max-width:100%;"> 
+  <img src="https://raw.githubusercontent.com/vctr-moraes/ChurchSystem/master/images/Diagrama%20ER.png" style="max-width:100%;"> 
 </p>
 
+### This project is under the MIT license. Consult the <a href="https://github.com/vctr-moraes/ChurchSystem/blob/master/LICENSE" target="_blank">LICENSE</a> for more information.
 
+<br>
 
-<br><br><br>
-
-<p align="center"> – – – – – – Projeto em desenvolvimento – – – – – – </p>
+<p align="center">★★★</p>
+<p align="center">Project under development...</p>
