@@ -8,6 +8,6 @@ namespace ChurchSystem.Business.Models
         public string Description { get; set; }
 
         /* EF Relations */
-        public IEnumerable<Member> Members { get; set; }
+        public IEnumerable<MemberGroup> Members { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ChurchSystem.Business.Models
 {
@@ -17,5 +18,8 @@ namespace ChurchSystem.Business.Models
         public bool Baptized { get; set; }
         public bool Status { get; set; }
         public DateTime RegistrationDate { get; set; }
+
+        /* EF Relations */
+        public IEnumerable<Donation> Donations { get; set; }
     }
 }
