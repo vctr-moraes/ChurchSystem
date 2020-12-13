@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ChurchSystem.Data.Context;
+using ChurchSystem.Business.Interfaces;
+using ChurchSystem.Data.Repository;
 
 namespace ChurchSystem.App
 {
@@ -40,6 +42,12 @@ namespace ChurchSystem.App
             services.AddControllersWithViews();
 
             services.AddRazorPages();
+
+            services.AddScoped<ChurchSystemDbContext>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IDonationRepository, DonationRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

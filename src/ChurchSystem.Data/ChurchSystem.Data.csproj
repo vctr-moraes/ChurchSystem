@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="3.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore.relational" Version="3.1.1" />
