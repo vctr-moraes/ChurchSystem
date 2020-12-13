@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>@ViewData["Title"] - ChurchSystem.App</title>
+
+    @*Material-kit*@
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    @*Material-kit*@
+    @*<link href="~/lib/material-kit/assets/demo/demo.css" rel="stylesheet" />*@
+    <link href="~/lib/material-kit/assets/css/material-kit.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -44,6 +53,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*Material-kit*@
+    <script src="~/lib/material-kit/assets/js/core/jquery.min.js"></script>
+    <script src="~/lib/material-kit/assets/js/core/popper.min.js"></script>
+    <script src="~/lib/material-kit/assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="~/lib/material-kit/assets/js/plugins/moment.min.js"></script>
+    <script src="~/lib/material-kit/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <script src="~/lib/material-kit/assets/js/plugins/nouislider.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="~/lib/material-kit/assets/js/material-kit.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
