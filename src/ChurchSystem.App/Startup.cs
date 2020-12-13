@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using ChurchSystem.Data.Context;
 using ChurchSystem.Business.Interfaces;
 using ChurchSystem.Data.Repository;
+using AutoMapper;
 
 namespace ChurchSystem.App
 {
@@ -41,7 +42,10 @@ namespace ChurchSystem.App
 
             services.AddControllersWithViews();
 
-            services.AddRazorPages();
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            //services.AddRazorPages();
 
             services.AddScoped<ChurchSystemDbContext>();
             services.AddScoped<IMemberRepository, MemberRepository>();

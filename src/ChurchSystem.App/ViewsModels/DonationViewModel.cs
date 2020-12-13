@@ -20,7 +20,8 @@ namespace ChurchSystem.App.ViewsModels
         [Required(ErrorMessage = "The {0} field is required.")]
         public int Type { get; set; }
 
-        [HiddenInput]
+        [Display(Name = "Member")]
+        [Required(ErrorMessage = "The {0} field is required.")]
         public Guid MemberId { get; set; }
 
         public MemberViewModel Member { get; set; }
