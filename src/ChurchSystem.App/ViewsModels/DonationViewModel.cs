@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ChurchSystem.App.ViewsModels
 {
@@ -25,5 +25,7 @@ namespace ChurchSystem.App.ViewsModels
         public Guid MemberId { get; set; }
 
         public MemberViewModel Member { get; set; }
+        
+        public IEnumerable<MemberViewModel> Members { get; set; }
     }
 }
