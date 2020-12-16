@@ -106,7 +106,7 @@ namespace ChurchSystem.App.Controllers
         // GET: Donation/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
-            var donationViewModel = await GetDonation(id);
+            DonationViewModel donationViewModel = await GetDonation(id);
 
             if (donationViewModel == null)
             {
@@ -121,7 +121,7 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var donationViewModel = await GetDonation(id);
+            DonationViewModel donationViewModel = await GetDonation(id);
 
             if (donationViewModel == null)
             {
@@ -130,7 +130,7 @@ namespace ChurchSystem.App.Controllers
 
             await _donationRepository.DeleteEntity(id);
 
-            TempData["Sucesso"] = "Donation successfully deleted!";
+            TempData["Success"] = "Donation successfully deleted!";
 
             return RedirectToAction("Index");
         }

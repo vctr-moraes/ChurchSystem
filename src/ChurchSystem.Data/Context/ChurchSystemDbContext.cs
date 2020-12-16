@@ -1,6 +1,5 @@
 ﻿using ChurchSystem.Business.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ChurchSystem.Data.Context
 {
