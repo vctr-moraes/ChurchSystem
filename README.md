@@ -4,7 +4,7 @@ Web application for human resources management in a religious institution, writt
 > *The project aims to be used for studies and teaching object-oriented programming, serving as a model for the implementation of systems with layered architecture, using the model-view-controller pattern.*
 
 ### Technologies used
-* ASP.NET Core 3.1 LTS
+* ASP.NET Core MVC 3.1 LTS
 * ASP.NET Identity Core
 * Entity Framework Core
 * C#
