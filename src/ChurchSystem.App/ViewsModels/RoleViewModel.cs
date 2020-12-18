@@ -16,5 +16,7 @@ namespace ChurchSystem.App.ViewsModels
         public string Description { get; set; }
 
         public IEnumerable<MemberViewModel> Members { get; set; }
+
+        public MemberViewModel Member { get; set; }
     }
 }

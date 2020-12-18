@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201218000555_UpdateTable.cs" />
+    <Compile Remove="Migrations\20201218000555_UpdateTable.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="3.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore.relational" Version="3.1.1" />

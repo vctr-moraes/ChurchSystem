@@ -12,11 +12,18 @@ namespace ChurchSystem.App.Controllers
     public class MemberController : BaseController
     {
         private readonly IMemberRepository _memberRepository;
+        private readonly IGroupRepository _groupRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IMapper _mapper;
 
-        public MemberController(IMemberRepository memberRepository, IMapper mapper)
+        public MemberController(IMemberRepository memberRepository,
+                                IGroupRepository groupRepository,
+                                IRoleRepository roleRepository,
+                                IMapper mapper)
         {
             _memberRepository = memberRepository;
+            _groupRepository = groupRepository;
+            _roleRepository = roleRepository;
             _mapper = mapper;
         }
 
@@ -40,9 +47,10 @@ namespace ChurchSystem.App.Controllers
         }
 
         // GET: Member/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            MemberViewModel memberViewModel = await InitializeMember(new MemberViewModel());
+            return View(memberViewModel);
         }
 
         // POST: Member/Create
@@ -50,6 +58,8 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel memberViewModel)
         {
+            memberViewModel = await InitializeMember(memberViewModel);
+
             if (!ModelState.IsValid)
             {
                 return View(memberViewModel);
@@ -128,6 +138,14 @@ namespace ChurchSystem.App.Controllers
         private async Task<MemberViewModel> GetMember(Guid id)
         {
             return _mapper.Map<MemberViewModel>(await _memberRepository.GetEntityById(id));
+        }
+
+        private async Task<MemberViewModel> InitializeMember(MemberViewModel memberViewModel)
+        {
+            memberViewModel.Groups = _mapper.Map<IEnumerable<GroupViewModel>>(await _groupRepository.GetEntities());
+            memberViewModel.Roles = _mapper.Map<IEnumerable<RoleViewModel>>(await _roleRepository.GetEntities());
+
+            return memberViewModel;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -58,5 +59,21 @@ namespace ChurchSystem.App.ViewsModels
 
         [ScaffoldColumn(false)]
         public DateTime RegistrationDate { get; set; }
+
+        [Display(Name = "Groups")]
+        [Required(ErrorMessage = "The {0} field is required.")]
+        public Guid GroupId { get; set; }
+
+        public GroupViewModel Group { get; set; }
+
+        public IEnumerable<GroupViewModel> Groups { get; set; }
+
+        [Display(Name = "Roles")]
+        [Required(ErrorMessage = "The {0} field is required.")]
+        public Guid RoleId { get; set; }
+
+        public RoleViewModel Role { get; set; }
+
+        public IEnumerable<RoleViewModel> Roles { get; set; }
     }
 }
