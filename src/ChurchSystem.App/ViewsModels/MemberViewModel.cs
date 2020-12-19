@@ -20,6 +20,7 @@ namespace ChurchSystem.App.ViewsModels
         public string Document { get; set; }
 
         [DisplayName("DateBirth")]
+        [DataType(DataType.Date)]
         public DateTime DateBirth { get; set; }
 
         [DisplayName("Address")]
@@ -43,11 +44,13 @@ namespace ChurchSystem.App.ViewsModels
         public string Mailbox { get; set; }
 
         [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
         [StringLength(200, ErrorMessage = "The {0} field must be between {2} and {1} characters.", MinimumLength = 2)]
         public string Email { get; set; }
 
         [DisplayName("Phone number")]
         [Required(ErrorMessage = "The {0} field is required.")]
+        [DataType(DataType.PhoneNumber)]
         [StringLength(11, ErrorMessage = "The {0} field must be between {2} and {1} characters.", MinimumLength = 10)]
         public string PhoneNumber { get; set; }
 
@@ -58,22 +61,35 @@ namespace ChurchSystem.App.ViewsModels
         public bool Status { get; set; }
 
         [ScaffoldColumn(false)]
-        public DateTime RegistrationDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime RegistrationDate { get; set; } = DateTime.Now;
+
+        #region Groups
 
         [Display(Name = "Groups")]
-        [Required(ErrorMessage = "The {0} field is required.")]
         public Guid GroupId { get; set; }
+
+        [Display(Name = "Groups")]
+        public Guid[] GroupsIds { get; set; }
 
         public GroupViewModel Group { get; set; }
 
         public IEnumerable<GroupViewModel> Groups { get; set; }
 
+        #endregion
+
+        #region Roles
+
         [Display(Name = "Roles")]
-        [Required(ErrorMessage = "The {0} field is required.")]
         public Guid RoleId { get; set; }
+
+        [Display(Name = "Roles")]
+        public Guid[] RolesIds { get; set; }
 
         public RoleViewModel Role { get; set; }
 
         public IEnumerable<RoleViewModel> Roles { get; set; }
+
+        #endregion
     }
 }

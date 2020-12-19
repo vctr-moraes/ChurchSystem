@@ -21,5 +21,7 @@ namespace ChurchSystem.Business.Models
 
         /* EF Relations */
         public IEnumerable<Donation> Donations { get; set; }
+        public List<MemberGroup> MemberGroups { get; set; } = new List<MemberGroup>();
+        public List<MemberRole> MemberRoles { get; set; } = new List<MemberRole>();
     }
 }

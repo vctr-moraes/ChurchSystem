@@ -6,6 +6,7 @@ using AutoMapper;
 using ChurchSystem.App.ViewsModels;
 using ChurchSystem.Business.Interfaces;
 using ChurchSystem.Business.Models;
+using System.Linq;
 
 namespace ChurchSystem.App.Controllers
 {
@@ -58,7 +59,7 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel memberViewModel)
         {
-            memberViewModel = await InitializeMember(memberViewModel);
+            //memberViewModel = await InitializeMember(memberViewModel);
 
             if (!ModelState.IsValid)
             {
@@ -66,6 +67,19 @@ namespace ChurchSystem.App.Controllers
             }
 
             Member member = _mapper.Map<Member>(memberViewModel);
+
+            foreach (var item in memberViewModel.GroupsIds ?? Enumerable.Empty<Guid>())
+            {
+                Group group = await _groupRepository.GetEntityById(item);
+                member.MemberGroups.Add(new MemberGroup(group, member));
+            }
+
+            foreach (var item in memberViewModel.RolesIds ?? Enumerable.Empty<Guid>())
+            {
+                Role role = await _roleRepository.GetEntityById(item);
+                member.MemberRoles.Add(new MemberRole(role, member));
+            }
+
             await _memberRepository.CreateEntity(member);
 
             return RedirectToAction("Index");
@@ -137,7 +151,7 @@ namespace ChurchSystem.App.Controllers
 
         private async Task<MemberViewModel> GetMember(Guid id)
         {
-            return _mapper.Map<MemberViewModel>(await _memberRepository.GetEntityById(id));
+            return _mapper.Map<MemberViewModel>(await _memberRepository.GetMember(id));
         }
 
         private async Task<MemberViewModel> InitializeMember(MemberViewModel memberViewModel)

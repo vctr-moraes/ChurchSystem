@@ -35,28 +35,28 @@
     </thead>
     <tbody>
         @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Neighborhood)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhoneNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Baptized)
-                    </td>
-                    <td class="text-right">
-                        <a asp-action="Edit" class="btn btn-secondary btn-sm" asp-route-id="@item.Id">Edit</a>
-                        <a asp-action="Details" class="btn btn-secondary btn-sm" asp-route-id="@item.Id">Details</a>
-                        <a asp-action="Delete" class="btn btn-secondary btn-sm" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Neighborhood)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baptized)
+                </td>
+                <td class="text-right">
+                    <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                    <a asp-action="Details" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
