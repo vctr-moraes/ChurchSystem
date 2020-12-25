@@ -11,10 +11,10 @@ namespace ChurchSystem.Business.Models
             Group = group;
             GroupId = group.Id;
             Member = member;
-            MemberId = member?.Id;
+            MemberId = member.Id;
         }
 
-        public Guid? MemberId { get; set; }
+        public Guid MemberId { get; set; }
         public Guid GroupId { get; set; }
 
         /* EF Relations */

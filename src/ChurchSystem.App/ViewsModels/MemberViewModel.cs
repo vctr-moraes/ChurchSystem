@@ -1,12 +1,49 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using ChurchSystem.Business.Models;
+using System.Linq;
 
 namespace ChurchSystem.App.ViewsModels
 {
     public class MemberViewModel
     {
+        public MemberViewModel() { }
+
+        public MemberViewModel(Member member)
+        {
+            Id = member.Id;
+            Name = member.Name;
+            Document = member.Document;
+            DateBirth = member.DateBirth;
+            Address = member.Address;
+            Neighborhood = member.Neighborhood;
+            City = member.City;
+            State = member.State;
+            Mailbox = member.Mailbox;
+            Email = member.Email;
+            PhoneNumber = member.PhoneNumber;
+            Baptized = member.Baptized;
+            Status = member.Status;
+            RegistrationDate = member.RegistrationDate;
+            GroupsIds = member.MemberGroups.Select(g => g.Group.Id).ToArray();
+            RolesIds = member.MemberRoles.Select(r => r.Role.Id).ToArray();
+            MemberGroups = new List<MemberGroupViewModel>();
+            MemberRoles = new List<MemberRoleViewModel>();
+
+            foreach (var item in member.MemberGroups)
+            {
+                MemberGroups.Add(new MemberGroupViewModel(item));
+            }
+
+            foreach (var item in member.MemberRoles)
+            {
+                MemberRoles.Add(new MemberRoleViewModel(item));
+            }
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -21,7 +58,7 @@ namespace ChurchSystem.App.ViewsModels
 
         [DisplayName("DateBirth")]
         [DataType(DataType.Date)]
-        public DateTime DateBirth { get; set; }
+        public DateTime? DateBirth { get; set; }
 
         [DisplayName("Address")]
         [StringLength(200, ErrorMessage = "The {0} field must be between {2} and {1} characters.", MinimumLength = 2)]
@@ -58,7 +95,7 @@ namespace ChurchSystem.App.ViewsModels
         public bool Baptized { get; set; }
 
         [DisplayName("Status")]
-        public bool Status { get; set; }
+        public bool Status { get; set; } = true;
 
         [ScaffoldColumn(false)]
         [DataType(DataType.Date)]
@@ -74,7 +111,9 @@ namespace ChurchSystem.App.ViewsModels
 
         public GroupViewModel Group { get; set; }
 
-        public IEnumerable<GroupViewModel> Groups { get; set; }
+        public IEnumerable<SelectListItem> Groups { get; set; }
+
+        public List<MemberGroupViewModel> MemberGroups { get; set; }
 
         #endregion
 
@@ -88,7 +127,9 @@ namespace ChurchSystem.App.ViewsModels
 
         public RoleViewModel Role { get; set; }
 
-        public IEnumerable<RoleViewModel> Roles { get; set; }
+        public List<MemberRoleViewModel> MemberRoles { get; set; }
+
+        public IEnumerable<SelectListItem> Roles { get; set; }
 
         #endregion
     }

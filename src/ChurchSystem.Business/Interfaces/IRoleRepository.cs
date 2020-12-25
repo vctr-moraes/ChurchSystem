@@ -7,6 +7,6 @@ namespace ChurchSystem.Business.Interfaces
 {
     public interface IRoleRepository : IRepository<Role>
     {
-
+        List<Role> GetRoles();
     }
 }
