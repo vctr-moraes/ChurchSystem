@@ -22,5 +22,17 @@ namespace ChurchSystem.Data.Repository
         {
             return Db.Groups.ToList();
         }
+
+        public async Task<List<Group>> GetGroupsById(Guid[] groupsIds)
+        {
+            List<Group> groups = await Db.Groups.ToListAsync();
+
+            if (groupsIds != null)
+            {
+                groups = groups.Where(g => groupsIds.Contains(g.Id)).ToList();
+            }
+            
+            return groups;
+        }
     }
 }

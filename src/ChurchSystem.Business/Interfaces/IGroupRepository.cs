@@ -7,7 +7,8 @@ namespace ChurchSystem.Business.Interfaces
 {
     public interface IGroupRepository : IRepository<Group>
     {
-        Task<Group> GetGroup(Guid id);
+        Task<Group> GetGroup(Guid groupId);
         List<Group> GetGroups();
+        Task<List<Group>> GetGroupsById(Guid[] groupsIds);
     }
 }
