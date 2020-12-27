@@ -9,7 +9,6 @@
 <hr />
 <div class="row">
     <div class="col-12">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <form asp-action="Create">
             @{ await Html.RenderPartialAsync("_MemberFormPartial.cshtml"); }
             <div class="form-group">

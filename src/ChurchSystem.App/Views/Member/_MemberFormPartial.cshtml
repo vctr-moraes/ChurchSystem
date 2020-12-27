@@ -1,5 +1,6 @@
 ﻿@model ChurchSystem.App.ViewsModels.MemberViewModel
 
+<div asp-validation-summary="All" class="text-danger"></div>
 <div class="row">
     <div class="form-group col-6">
         <label asp-for="Name" class="control-label"></label>
@@ -61,18 +62,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group form-check col-6">
-        <label class="form-check-label">
-            <input class="form-check-input" asp-for="Baptized" /> @Html.DisplayNameFor(model => model.Baptized)
-        </label>
-    </div>
-    <div class="form-group form-check col-6">
-        <label class="form-check-label">
-            <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
-        </label>
-    </div>
-</div>
-<div class="row">
     <div class="form-group col-6">
         <label asp-for="GroupId" class="control-label"></label>
         <select asp-for="GroupsIds" class="form-control selectpicker border" data-live-search="true" title="Select" multiple asp-items="Model.Groups"></select>
@@ -82,3 +71,14 @@
         <select asp-for="RolesIds" class="form-control selectpicker border" data-live-search="true" title="Select" multiple asp-items="Model.Roles"></select>
     </div>
 </div>
+<div class="">
+    <div class="form-group custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" asp-for="Baptized" />
+        <label class="custom-control-label" for="Baptized">@Html.DisplayNameFor(model => model.Baptized)</label>
+    </div>
+    <div class="form-group custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" asp-for="Status" />
+        <label class="custom-control-label" for="Status">@Html.DisplayNameFor(model => model.Status)</label>
+    </div>
+</div>
+

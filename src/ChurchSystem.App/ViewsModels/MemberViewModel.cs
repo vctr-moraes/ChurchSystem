@@ -91,10 +91,10 @@ namespace ChurchSystem.App.ViewsModels
         [StringLength(11, ErrorMessage = "The {0} field must be between {2} and {1} characters.", MinimumLength = 10)]
         public string PhoneNumber { get; set; }
 
-        [DisplayName("Baptized")]
+        [DisplayName("Member baptized?")]
         public bool Baptized { get; set; }
 
-        [DisplayName("Status")]
+        [DisplayName("Member active?")]
         public bool Status { get; set; } = true;
 
         [ScaffoldColumn(false)]

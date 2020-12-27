@@ -20,7 +20,7 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<List<Role>> GetRolesById(Guid[] rolesids)
         {
-            List<Role> roles = await Db.ListRoles.ToListAsync();
+            List<Role> roles = await Db.ListRoles.AsNoTracking().ToListAsync();
 
             if (rolesids != null)
             {

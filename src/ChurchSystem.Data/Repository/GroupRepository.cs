@@ -25,7 +25,7 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<List<Group>> GetGroupsById(Guid[] groupsIds)
         {
-            List<Group> groups = await Db.Groups.ToListAsync();
+            List<Group> groups = await Db.Groups.AsNoTracking().ToListAsync();
 
             if (groupsIds != null)
             {
