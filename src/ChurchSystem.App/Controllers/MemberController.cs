@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using AutoMapper;
 using ChurchSystem.App.ViewsModels;
 using ChurchSystem.Business.Interfaces;
 using ChurchSystem.Business.Models;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ChurchSystem.App.Controllers
 {
@@ -28,7 +28,6 @@ namespace ChurchSystem.App.Controllers
             _roleRepository = roleRepository;
             _mapper = mapper;
             MemberVM = new MemberViewModel();
-            member = new Member();
         }
 
         [BindProperty]
@@ -36,8 +35,6 @@ namespace ChurchSystem.App.Controllers
 
         [BindProperty]
         public List<MemberViewModel> Members { get; set; }
-
-        public Member member { get; set; }
 
         // GET: Members
         public async Task<IActionResult> Index()
@@ -58,7 +55,6 @@ namespace ChurchSystem.App.Controllers
             }
 
             MemberVM = new MemberViewModel(member);
-
             return View(MemberVM);
         }
 
@@ -79,19 +75,22 @@ namespace ChurchSystem.App.Controllers
                 return View(memberViewModel);
             }
 
-            member.Name = memberViewModel.Name;
-            member.Document = memberViewModel.Document;
-            member.DateBirth = memberViewModel.DateBirth;
-            member.Address = memberViewModel.Address;
-            member.Neighborhood = memberViewModel.Neighborhood;
-            member.City = memberViewModel.City;
-            member.State = memberViewModel.State;
-            member.Mailbox = memberViewModel.Mailbox;
-            member.Email = memberViewModel.Email;
-            member.PhoneNumber = memberViewModel.PhoneNumber;
-            member.Baptized = memberViewModel.Baptized;
-            member.Status = memberViewModel.Status;
-            member.RegistrationDate = memberViewModel.RegistrationDate;
+            Member member = new Member
+            {
+                Name = memberViewModel.Name,
+                Document = memberViewModel.Document,
+                DateBirth = memberViewModel.DateBirth,
+                Address = memberViewModel.Address,
+                Neighborhood = memberViewModel.Neighborhood,
+                City = memberViewModel.City,
+                State = memberViewModel.State,
+                Mailbox = memberViewModel.Mailbox,
+                Email = memberViewModel.Email,
+                PhoneNumber = memberViewModel.PhoneNumber,
+                Baptized = memberViewModel.Baptized,
+                Status = memberViewModel.Status,
+                RegistrationDate = memberViewModel.RegistrationDate
+            };
 
             foreach (var item in memberViewModel.GroupsIds ?? Enumerable.Empty<Guid>())
             {
@@ -103,9 +102,17 @@ namespace ChurchSystem.App.Controllers
                 member.AddRole(await _roleRepository.GetEntityById(item));
             }
 
-            await _memberRepository.CreateEntity(member);
-
-            return RedirectToAction("Index");
+            try
+            {
+                await _memberRepository.CreateEntity(member);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                InitializeMember();
+                return View(MemberVM);
+            }
         }
 
         // GET: Member/Edit/5
@@ -120,7 +127,6 @@ namespace ChurchSystem.App.Controllers
 
             MemberVM = new MemberViewModel(member);
             InitializeMember();
-
             return View(MemberVM);
         }
 
@@ -139,7 +145,7 @@ namespace ChurchSystem.App.Controllers
                 return View(memberViewModel);
             }
 
-            member = await _memberRepository.GetMember(id);
+            Member member = await _memberRepository.GetMember(id);
 
             member.Name = memberViewModel.Name;
             member.Document = memberViewModel.Document;
@@ -166,9 +172,17 @@ namespace ChurchSystem.App.Controllers
                 member.UpdateRole(roles);
             }
 
-            await _memberRepository.UpdateEntity(member);
-
-            return RedirectToAction("Index");
+            try
+            {
+                await _memberRepository.UpdateEntity(member);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                InitializeMember();
+                return View(MemberVM);
+            }
         }
 
         // GET: Member/Delete/5
@@ -182,7 +196,6 @@ namespace ChurchSystem.App.Controllers
             }
 
             MemberVM = new MemberViewModel(member);
-
             return View(MemberVM);
         }
 
@@ -198,9 +211,17 @@ namespace ChurchSystem.App.Controllers
                 return NotFound();
             }
 
-            await _memberRepository.DeleteEntity(id);
-
-            return RedirectToAction("Index");
+            try
+            {
+                await _memberRepository.DeleteEntity(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                MemberVM = new MemberViewModel(member);
+                return View(MemberVM);
+            }
         }
 
         private void InitializeMember()
