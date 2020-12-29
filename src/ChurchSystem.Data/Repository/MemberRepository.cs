@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ChurchSystem.Business.Interfaces;
 using ChurchSystem.Business.Models;
@@ -17,6 +19,11 @@ namespace ChurchSystem.Data.Repository
                 .Include("MemberGroups.Group")
                 .Include("MemberRoles.Role")
                 .FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public List<Member> GetMembers()
+        {
+            return Db.Members.ToList();
         }
     }
 }

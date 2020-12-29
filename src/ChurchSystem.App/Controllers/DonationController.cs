@@ -6,6 +6,8 @@ using AutoMapper;
 using ChurchSystem.App.ViewsModels;
 using ChurchSystem.Business.Interfaces;
 using ChurchSystem.Business.Models;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ChurchSystem.App.Controllers
 {
@@ -20,7 +22,11 @@ namespace ChurchSystem.App.Controllers
             _donationRepository = donationRepository;
             _memberRepository = memberRepository;
             _mapper = mapper;
+            DonationVM = new DonationViewModel();
         }
+
+        [BindProperty]
+        public DonationViewModel DonationVM { get; set; }
 
         // GET: Donation
         public async Task<IActionResult> Index()
@@ -42,10 +48,16 @@ namespace ChurchSystem.App.Controllers
         }
 
         // GET: Donation/Create
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            DonationViewModel donationViewModel = await GetMembers(new DonationViewModel());
-            return View(donationViewModel);
+            DonationVM.Members = _memberRepository.GetMembers()
+                .Select(m => new SelectListItem
+                {
+                    Text = m.Name,
+                    Value = m.Id.ToString()
+                });
+
+            return View(DonationVM);
         }
 
         // POST: Donation/Create
@@ -138,13 +150,13 @@ namespace ChurchSystem.App.Controllers
         private async Task<DonationViewModel> GetDonation(Guid id)
         {
             DonationViewModel donationViewModel = _mapper.Map<DonationViewModel>(await _donationRepository.GetEntityById(id));
-            donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
+            //donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
             return donationViewModel;
         }
 
         private async Task<DonationViewModel> GetMembers(DonationViewModel donationViewModel)
         {
-            donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
+            //donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
             return donationViewModel;
         }
     }
