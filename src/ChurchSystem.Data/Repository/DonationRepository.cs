@@ -1,8 +1,5 @@
 ﻿using ChurchSystem.Business.Models;
 using ChurchSystem.Business.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using ChurchSystem.Data.Context;
 
 namespace ChurchSystem.Data.Repository

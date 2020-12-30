@@ -50,13 +50,7 @@ namespace ChurchSystem.App.Controllers
         // GET: Donation/Create
         public IActionResult Create()
         {
-            DonationVM.Members = _memberRepository.GetMembers()
-                .Select(m => new SelectListItem
-                {
-                    Text = m.Name,
-                    Value = m.Id.ToString()
-                });
-
+            InitializeDonation();
             return View(DonationVM);
         }
 
@@ -65,15 +59,31 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DonationViewModel donationViewModel)
         {
-            donationViewModel = await GetMembers(donationViewModel);
-
             if (!ModelState.IsValid)
             {
                 return View(donationViewModel);
             }
 
-            await _donationRepository.CreateEntity(_mapper.Map<Donation>(donationViewModel));
-            return RedirectToAction("Index");
+            Donation donation = new Donation
+            {
+                Amount = donationViewModel.Amount,
+                Type = (DonationType)donationViewModel.DonationType,
+                Date = donationViewModel.Date,
+                Member = await _memberRepository.GetMember(donationViewModel.MemberId),
+                MemberId = donationViewModel.MemberId
+            };
+
+            try
+            {
+                await _donationRepository.CreateEntity(donation);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                InitializeDonation();
+                return View(DonationVM);
+            }
         }
 
         // GET: Donation/Edit/5
@@ -158,6 +168,16 @@ namespace ChurchSystem.App.Controllers
         {
             //donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
             return donationViewModel;
+        }
+
+        private void InitializeDonation()
+        {
+            DonationVM.Members = _memberRepository.GetMembers()
+                .Select(m => new SelectListItem
+                {
+                    Text = m.Name,
+                    Value = m.Id.ToString()
+                });
         }
     }
 }
