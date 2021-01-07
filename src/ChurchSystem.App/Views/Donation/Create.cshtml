@@ -1,5 +1,4 @@
 ﻿@model ChurchSystem.App.ViewsModels.DonationViewModel
-@using ChurchSystem.App.ViewsModels
 
 @{
     ViewData["Title"] = "Create";
@@ -11,34 +10,7 @@
 <div class="">
     <div class="">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label asp-for="MemberId" class="control-label"></label>
-                    <select asp-for="MemberId" class="form-control selectpicker border" data-live-search="true" title="Select" asp-items="Model.Members"></select>
-                    <span asp-validation-for="MemberId" class="text-danger"></span>
-                </div>
-                <div class="form-group col-6">
-                    <label asp-for="Date" class="control-label"></label>
-                    <input asp-for="Date" class="form-control" />
-                    <span asp-validation-for="Date" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label asp-for="DonationType" class="control-label"></label>
-                    @*<input asp-for="Type" class="form-control" />*@
-                    <select asp-for="DonationType" class="form-control" asp-items="Html.GetEnumSelectList<DonationTypeViewModel>()">
-                        <option value="" selected disabled>Select</option>
-                    </select>
-                    <span asp-validation-for="DonationType" class="text-danger"></span>
-                </div>
-                <div class="form-group col-6">
-                    <label asp-for="Amount" class="control-label"></label>
-                    <input asp-for="Amount" class="form-control" />
-                    <span asp-validation-for="Amount" class="text-danger"></span>
-                </div>
-            </div>
+            @{ await Html.RenderPartialAsync("_DonationFormPartial.cshtml"); }
             <div class="form-group">
                 <a class="btn btn-secondary" asp-action="Index">
                     <i class="fa fa-arrow-left"></i>

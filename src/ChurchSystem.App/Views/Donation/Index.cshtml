@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<ChurchSystem.App.ViewsModels.DonationViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Donations";
 }
 
-<h1>Index</h1>
+<h3>Donations</h3>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="fa fa-plus"></i>
+        Register new
+    </a>
 </p>
-<table class="table">
-    <thead>
+<table class="table border table-hover">
+    <thead class="thead-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -42,10 +45,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Member.Name)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <td class="text-right">
+                    <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                    <a asp-action="Details" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         }
