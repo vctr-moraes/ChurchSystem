@@ -4,14 +4,16 @@ using ChurchSystem.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChurchSystem.Data.Migrations
 {
     [DbContext(typeof(ChurchSystemDbContext))]
-    partial class ChurchSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210106023604_UpdateDonations")]
+    partial class UpdateDonations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

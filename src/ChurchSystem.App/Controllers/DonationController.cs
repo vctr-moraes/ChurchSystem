@@ -29,9 +29,10 @@ namespace ChurchSystem.App.Controllers
         public DonationViewModel DonationVM { get; set; }
 
         // GET: Donation
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(_mapper.Map<IEnumerable<DonationViewModel>>(await _donationRepository.GetEntities()));
+            var teste = _donationRepository.GetDonations();
+            return View(_mapper.Map<IEnumerable<DonationViewModel>>(teste));
         }
 
         // GET: Donation/Details/5

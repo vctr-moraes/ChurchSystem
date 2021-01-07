@@ -9,7 +9,7 @@ namespace ChurchSystem.Data.Mappings
         public void Configure(EntityTypeBuilder<Donation> builder)
         {
             builder
-                .HasKey(d => d.Date);
+                .HasKey(d => d.Id);
 
             builder
                 .Property(d => d.Date)
