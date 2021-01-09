@@ -1,23 +1,26 @@
 ﻿@model ChurchSystem.App.ViewsModels.MemberViewModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete member";
 }
 
-<h4>Delete member</h4>
+<h3 class="ui header">
+    <i class="user outline icon"></i>
+    Delete member
+</h3>
 
-<h5 class="text-danger">Are you sure you want to delete this?</h5>
+<div class="ui divider"></div>
+
 <div>
-    <hr />
     @{ await Html.RenderPartialAsync("_MemberDetailsPartial.cshtml"); }
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <a class="btn btn-secondary" asp-action="Index">
-            <i class="fa fa-arrow-left"></i>
+        <a class="ui button" asp-action="Index">
+            <i class="arrow left icon"></i>
             Back
         </a>
-        <button type="submit" class="btn btn-danger">
-            <i class="fa fa-trash"></i>
+        <button type="submit" class="ui red button" data-tooltip="Are you sure you want to delete this?" data-position="right center">
+            <i class="trash alternate outline icon"></i>
             Delete
         </button>
     </form>

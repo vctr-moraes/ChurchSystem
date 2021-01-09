@@ -1,0 +1,13 @@
+@if (ViewData.ModelState.ErrorCount > 0)
+{
+    <div style="padding-top: 6px;"></div>
+    <div class="ui warning message">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="content">
+            <div class="header">
+                Um ou mais campos obrigatórios não foram preenchidos
+            </div>
+            <div style="padding-top: 0px; margin-bottom: -15px;" asp-validation-summary="All"></div>
+        </div>
+    </div>
+}

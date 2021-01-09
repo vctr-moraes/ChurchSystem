@@ -1,84 +1,101 @@
 ﻿@model ChurchSystem.App.ViewsModels.MemberViewModel
 
-<div asp-validation-summary="All" class="text-danger"></div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="Document" class="control-label"></label>
-        <input asp-for="Document" class="form-control" />
-        <span asp-validation-for="Document" class="text-danger"></span>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="DateBirth" class="control-label"></label>
-        <input asp-for="DateBirth" class="form-control" />
-        <span asp-validation-for="DateBirth" class="text-danger"></span>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="@Model.Address" class="control-label"></label>
-        <input asp-for="@Model.Address" class="form-control" />
-        <span asp-validation-for="@Model.Address" class="text-danger"></span>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="Name" class=""></label>
+            <input asp-for="Name" class="" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Document" class=""></label>
+            <input asp-for="Document" class="" />
+            <span asp-validation-for="Document" class="text-danger"></span>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="Neighborhood" class="control-label"></label>
-        <input asp-for="Neighborhood" class="form-control" />
-        <span asp-validation-for="Neighborhood" class="text-danger"></span>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="City" class="control-label"></label>
-        <input asp-for="City" class="form-control" />
-        <span asp-validation-for="City" class="text-danger"></span>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="State" class="control-label"></label>
-        <input asp-for="State" class="form-control" />
-        <span asp-validation-for="State" class="text-danger"></span>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="Mailbox" class="control-label"></label>
-        <input asp-for="Mailbox" class="form-control" />
-        <span asp-validation-for="Mailbox" class="text-danger"></span>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="DateBirth" class=""></label>
+            <input asp-for="DateBirth" class="" />
+            <span asp-validation-for="DateBirth" class="text-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="@Model.Address" class=""></label>
+            <input asp-for="@Model.Address" class="" />
+            <span asp-validation-for="@Model.Address" class="text-danger"></span>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="PhoneNumber" class="control-label"></label>
-        <input asp-for="PhoneNumber" class="form-control" />
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-6">
-        <label asp-for="GroupId" class="control-label"></label>
-        <select asp-for="GroupsIds" class="form-control selectpicker border" data-live-search="true" title="Select" multiple asp-items="Model.Groups"></select>
-    </div>
-    <div class="form-group col-6">
-        <label asp-for="RoleId" class="control-label"></label>
-        <select asp-for="RolesIds" class="form-control selectpicker border" data-live-search="true" title="Select" multiple asp-items="Model.Roles"></select>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="Neighborhood" class=""></label>
+            <input asp-for="Neighborhood" class="" />
+            <span asp-validation-for="Neighborhood" class="text-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="City" class=""></label>
+            <input asp-for="City" class="" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
     </div>
 </div>
-<div class="">
-    <div class="form-group custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" asp-for="Baptized" />
-        <label class="custom-control-label" for="Baptized">@Html.DisplayNameFor(model => model.Baptized)</label>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="State" class=""></label>
+            <input asp-for="State" class="" />
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Mailbox" class=""></label>
+            <input asp-for="Mailbox" class="" />
+            <span asp-validation-for="Mailbox" class="text-danger"></span>
+        </div>
     </div>
-    <div class="form-group custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" asp-for="Status" />
-        <label class="custom-control-label" for="Status">@Html.DisplayNameFor(model => model.Status)</label>
+</div>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="Email" class=""></label>
+            <input asp-for="Email" class="" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="PhoneNumber" class=""></label>
+            <input asp-for="PhoneNumber" class="" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <label asp-for="GroupId" class=""></label>
+            <select asp-for="GroupsIds" class="selectpicker form-control border" data-live-search="true" title="Select" multiple asp-items="Model.Groups"></select>
+        </div>
+        <div class="field">
+            <label asp-for="RoleId" class=""></label>
+            <select asp-for="RolesIds" class="selectpicker form-control border" data-live-search="true" title="Select" multiple asp-items="Model.Roles"></select>
+        </div>
+    </div>
+</div>
+<div class="field">
+    <div class="two fields">
+        <div class="field">
+            <div class="ui toggle checkbox">
+                <input class="" type="checkbox" asp-for="Baptized" />
+                <label class="" for="Baptized">@Html.DisplayNameFor(model => model.Baptized)</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui toggle checkbox">
+                <input class="" type="checkbox" asp-for="Status" />
+                <label class="" for="Status">@Html.DisplayNameFor(model => model.Status)</label>
+            </div>
+        </div>
     </div>
 </div>
 

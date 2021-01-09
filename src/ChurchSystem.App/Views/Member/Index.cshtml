@@ -4,16 +4,15 @@
     ViewData["Title"] = "Members";
 }
 
+<a class="ui right floated small primary labeled icon button" asp-action="Create">
+    <i class="user icon"></i>
+    Add User
+</a>
+
 <h3>Members</h3>
 
-<p>
-    <a class="btn btn-primary" asp-action="Create">
-        <i class="fa fa-plus"></i>
-        Create New
-    </a>
-</p>
-<table class="table border table-hover">
-    <thead class="thead-light">
+<table class="ui blue single line selectable table">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -26,9 +25,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Baptized)
             </th>
             <th></th>
         </tr>
@@ -48,13 +44,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Baptized)
-                </td>
-                <td class="text-right">
-                    <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
-                    <a asp-action="Details" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
-                    <a asp-action="Delete" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                <td class="right aligned">
+                    <a asp-action="Edit" class="ui button ui icon button" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
+                    <a asp-action="Details" class="ui button ui icon button" asp-route-id="@item.Id"><i class="search icon"></i></a>
+                    <a asp-action="Delete" class="ui button ui icon button" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
                 </td>
             </tr>
         }

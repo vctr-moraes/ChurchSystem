@@ -7,13 +7,13 @@
 <h3>Donations</h3>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">
+    <a class="ui primary button" asp-action="Create">
         <i class="fa fa-plus"></i>
         Register new
     </a>
 </p>
-<table class="table border table-hover">
-    <thead class="thead-light">
+<table class="ui single line selectable  table">
+    <thead class="">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -46,9 +46,9 @@
                     @Html.DisplayFor(modelItem => item.Member.Name)
                 </td>
                 <td class="text-right">
-                    <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
-                    <a asp-action="Details" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
-                    <a asp-action="Delete" class="btn btn-secondary" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                    <a asp-action="Edit" class="ui button" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                    <a asp-action="Details" class="ui button" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
+                    <a asp-action="Delete" class="ui button" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         }

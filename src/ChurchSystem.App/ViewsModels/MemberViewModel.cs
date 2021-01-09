@@ -56,7 +56,7 @@ namespace ChurchSystem.App.ViewsModels
         [StringLength(100, ErrorMessage = "The {0} field must be between {2} and {1} characters.", MinimumLength = 2)]
         public string Document { get; set; }
 
-        [DisplayName("DateBirth")]
+        [DisplayName("Date of birth")]
         [DataType(DataType.Date)]
         public DateTime? DateBirth { get; set; }
 
