@@ -45,9 +45,9 @@
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td class="right aligned">
-                    <a asp-action="Edit" class="ui button ui icon button" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
-                    <a asp-action="Details" class="ui button ui icon button" asp-route-id="@item.Id"><i class="search icon"></i></a>
-                    <a asp-action="Delete" class="ui button ui icon button" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
+                    <a asp-action="Edit" class="ui button icon" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
+                    <a asp-action="Details" class="ui button icon" asp-route-id="@item.Id"><i class="search icon"></i></a>
+                    <a asp-action="Delete" class="ui button icon" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
                 </td>
             </tr>
         }

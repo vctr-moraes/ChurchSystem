@@ -1,32 +1,37 @@
 ﻿@model ChurchSystem.App.ViewsModels.RoleViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create new role";
 }
 
-<h1>Create</h1>
+<h3 class="ui header">
+    <i class="wpforms icon"></i>
+    Create new role
+</h3>
 
-<h4>RoleViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+<div class="ui divider"></div>
+<partial name="/Views/Components/_ValidationSummary.cshtml" />
+<form asp-action="Create" class="ui form segment">
+    <div class="field">
+        <div class="two fields">
+            <div class="field">
+                <label asp-for="Description" class=""></label>
+                <input asp-for="Description" class="" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="form-group">
+        <a class="ui button" asp-action="Index">
+            <i class="arrow left icon"></i>
+            Back
+        </a>
+        <button type="submit" class="ui submit primary button">
+            <i class="check icon"></i>
+            Create
+        </button>
+    </div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

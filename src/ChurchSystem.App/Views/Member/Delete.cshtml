@@ -1,5 +1,12 @@
 ﻿@model ChurchSystem.App.ViewsModels.MemberViewModel
 
+<style>
+    [data-position="right center"][data-tooltip]:after{
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
 @{
     ViewData["Title"] = "Delete member";
 }
@@ -11,17 +18,15 @@
 
 <div class="ui divider"></div>
 
-<div>
-    @{ await Html.RenderPartialAsync("_MemberDetailsPartial.cshtml"); }
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <a class="ui button" asp-action="Index">
-            <i class="arrow left icon"></i>
-            Back
-        </a>
-        <button type="submit" class="ui red button" data-tooltip="Are you sure you want to delete this?" data-position="right center">
-            <i class="trash alternate outline icon"></i>
-            Delete
-        </button>
-    </form>
-</div>
+@{ await Html.RenderPartialAsync("_MemberDetailsPartial.cshtml"); }
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <a class="ui button" asp-action="Index">
+        <i class="arrow left icon"></i>
+        Back
+    </a>
+    <button type="submit" class="ui red button" data-tooltip="Are you sure you want to delete this?" data-position="right center">
+        <i class="trash alternate outline icon"></i>
+        Delete
+    </button>
+</form>

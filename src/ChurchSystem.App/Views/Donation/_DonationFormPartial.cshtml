@@ -1,12 +1,13 @@
 ﻿@model ChurchSystem.App.ViewsModels.DonationViewModel
 @using ChurchSystem.App.ViewsModels 
 
-<div asp-validation-summary="All" class="text-danger"></div>
 <div class="field">
     <div class="two fields">
         <div class="field">
             <label asp-for="MemberId" class=""></label>
-            <select asp-for="MemberId" class="ui fluid selection dropdown selectpicker border" data-live-search="true" title="Select" asp-items="Model.Members"></select>
+            <select asp-for="MemberId" class="ui dropdown" asp-items="Model.Members">
+                <option value="" selected disabled>Select</option>
+            </select>
             <span asp-validation-for="MemberId" class="text-danger"></span>
         </div>
         <div class="field">
@@ -32,3 +33,4 @@
         </div>
     </div>
 </div>
+

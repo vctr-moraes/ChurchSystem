@@ -1,30 +1,34 @@
 ﻿@model ChurchSystem.App.ViewsModels.DonationViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Register new donation";
 }
 
-<h4>Register new donation</h4>
+<h3 class="ui header">
+    <i class="money bill alternate outline icon"></i>
+    Register new donation
+</h3>
 
-<hr />
-<div class="">
-    <div class="">
-        <form asp-action="Create" class="ui form">
-            @{ await Html.RenderPartialAsync("_DonationFormPartial.cshtml"); }
-            <div class="form-group">
-                <a class="ui button" asp-action="Index">
-                    <i class="fa fa-arrow-left"></i>
-                    Back
-                </a>
-                <button type="submit" class="ui primary button">
-                    <i class="fa fa-check"></i>
-                    Create
-                </button>
-            </div>
-        </form>
+<div class="ui divider"></div>
+<partial name="/Views/Components/_ValidationSummary.cshtml" />
+<form asp-action="Create" class="ui form segment">
+    @{ await Html.RenderPartialAsync("_DonationFormPartial.cshtml"); }
+    <div class="form-group">
+        <a class="ui button" asp-action="Index">
+            <i class="arrow left icon"></i>
+            Back
+        </a>
+        <button type="submit" class="ui submit primary button">
+            <i class="check icon"></i>
+            Create
+        </button>
     </div>
-</div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $('select.dropdown').dropdown();
+    </script>
 }

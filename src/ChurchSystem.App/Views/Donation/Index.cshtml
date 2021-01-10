@@ -4,16 +4,15 @@
     ViewData["Title"] = "Donations";
 }
 
+<a class="ui right floated small primary labeled icon button" asp-action="Create">
+    <i class="money bill alternate outline icon"></i>
+    Register new
+</a>
+
 <h3>Donations</h3>
 
-<p>
-    <a class="ui primary button" asp-action="Create">
-        <i class="fa fa-plus"></i>
-        Register new
-    </a>
-</p>
-<table class="ui single line selectable  table">
-    <thead class="">
+<table class="ui blue single line selectable table">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -45,10 +44,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Member.Name)
                 </td>
-                <td class="text-right">
-                    <a asp-action="Edit" class="ui button" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
-                    <a asp-action="Details" class="ui button" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
-                    <a asp-action="Delete" class="ui button" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                <td class="right aligned">
+                    <a asp-action="Edit" class="ui button icon" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
+                    <a asp-action="Details" class="ui button icon" asp-route-id="@item.Id"><i class="search icon"></i></a>
+                    <a asp-action="Delete" class="ui button icon" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
                 </td>
             </tr>
         }
