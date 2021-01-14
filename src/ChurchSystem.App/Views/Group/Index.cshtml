@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<ChurchSystem.App.ViewsModels.GroupViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Groups";
 }
 
-<h1>Index</h1>
+<a class="ui right floated small primary labeled icon button" asp-action="Create">
+    <i class="add icon"></i>
+    Create group
+</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<h3 class="ui header">Groups</h3>
+
+<table class="ui blue single line selectable table">
     <thead>
         <tr>
             <th>
@@ -19,17 +21,17 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="right aligned">
+                <a asp-action="Edit" class="ui button icon" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
+                <a asp-action="Details" class="ui button icon" asp-route-id="@item.Id"><i class="search icon"></i></a>
+                <a asp-action="Delete" class="ui button icon" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

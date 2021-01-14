@@ -1,0 +1,38 @@
+@model ChurchSystem.App.ViewsModels.DonationViewModel
+
+<div class="ui segment">
+    <div class="ui relaxed divided list">
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Date)
+                </div>
+                @Html.DisplayFor(model => model.Date)
+            </div>
+        </div>
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </div>
+                @Html.DisplayFor(model => model.Amount)
+            </div>
+        </div>
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Type)
+                </div>
+                @Html.DisplayFor(model => model.Type)
+            </div>
+        </div>
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Member)
+                </div>
+                @Html.DisplayFor(model => model.Member)
+            </div>
+        </div>
+    </div>
+</div>

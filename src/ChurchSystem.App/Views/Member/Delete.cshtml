@@ -19,6 +19,7 @@
 <div class="ui divider"></div>
 
 @{ await Html.RenderPartialAsync("_MemberDetailsPartial.cshtml"); }
+
 <form asp-action="Delete">
     <input type="hidden" asp-for="Id" />
     <a class="ui button" asp-action="Index">

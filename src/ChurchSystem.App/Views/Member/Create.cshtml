@@ -13,16 +13,14 @@
 <partial name="/Views/Components/_ValidationSummary.cshtml" />
 <form asp-action="Create" class="ui form segment">
     @{ await Html.RenderPartialAsync("_MemberFormPartial.cshtml"); }
-    <div class="form-group">
-        <a class="ui button" asp-action="Index">
-            <i class="arrow left icon"></i>
-            Back
-        </a>
-        <button type="submit" class="ui submit primary button">
-            <i class="check icon"></i>
-            Create
-        </button>
-    </div>
+    <a class="ui button" asp-action="Index">
+        <i class="arrow left icon"></i>
+        Back
+    </a>
+    <button type="submit" class="ui submit primary button">
+        <i class="check icon"></i>
+        Create
+    </button>
 </form>
 
 @section Scripts {

@@ -5,11 +5,11 @@
 }
 
 <a class="ui right floated small primary labeled icon button" asp-action="Create">
-    <i class="wpforms icon"></i>
+    <i class="add icon"></i>
     Create Role
 </a>
 
-<h3>Roles</h3>
+<h3 class="ui header">Roles</h3>
 
 <table class="ui blue single line selectable table">
     <thead>
@@ -27,10 +27,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td class="right aligned">
-                    <a asp-action="Edit" class="ui button icon" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
-                    <a asp-action="Details" class="ui button icon" asp-route-id="@item.Id"><i class="search icon"></i></a>
-                    <a asp-action="Delete" class="ui button icon" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
-                </td>
+                <a asp-action="Edit" class="ui button icon" asp-route-id="@item.Id"><i class="pencil alternate icon"></i></a>
+                <a asp-action="Details" class="ui button icon" asp-route-id="@item.Id"><i class="search icon"></i></a>
+                <a asp-action="Delete" class="ui button icon" asp-route-id="@item.Id"><i class="trash alternate outline icon"></i></a>
+            </td>
         </tr>
     }
     </tbody>

@@ -1,24 +1,34 @@
 ﻿@model ChurchSystem.App.ViewsModels.GroupViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Group Details";
 }
 
-<h1>Details</h1>
+<h3 class="ui header">
+    <i class="users icon"></i>
+    Group details
+</h3>
 
-<div>
-    <h4>GroupViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
+<div class="ui divider"></div>
+
+<div class="ui segment">
+    <div class="ui relaxed divided list">
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Description)
+                </div>
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<a class="ui button" asp-action="Index">
+    <i class="arrow left icon"></i>
+    Back
+</a>
+<a class="ui primary button" asp-action="Edit" asp-route-id="@Model.Id">
+    <i class="pencil alternate icon"></i>
+    Edit
+</a>

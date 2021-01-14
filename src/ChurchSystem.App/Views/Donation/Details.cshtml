@@ -1,42 +1,22 @@
 ﻿@model ChurchSystem.App.ViewsModels.DonationViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Donation details";
 }
 
-<h1>Details</h1>
+<h3 class="ui header">
+    <i class="money bill alternate outline icon"></i>
+    Donation details
+</h3>
 
-<div>
-    <h4>DonationViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Member)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Member.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<div class="ui divider"></div>
+
+@{ await Html.RenderPartialAsync("_DonationDetailsPartial.cshtml"); }
+<a class="ui button" asp-action="Index">
+    <i class="arrow left icon"></i>
+    Back
+</a>
+<a class="ui primary button" asp-action="Edit" asp-route-id="@Model.Id">
+    <i class="pencil alternate icon"></i>
+    Edit
+</a>
