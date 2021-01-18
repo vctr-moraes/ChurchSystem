@@ -1,33 +1,26 @@
 ﻿@model ChurchSystem.App.ViewsModels.GroupViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit group";
 }
 
-<h1>Edit</h1>
+<h3 class="ui header">Edit group</h3>
 
-<h4>GroupViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<div class="ui divider"></div>
+<partial name="/Views/Components/_ValidationSummary.cshtml" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<form asp-action="Edit" class="ui form segment">
+    @{ await Html.RenderPartialAsync("_GroupFormPartial.cshtml"); }
+    <input type="hidden" asp-for="Id" />
+    <a class="ui button" asp-action="Index">
+        <i class="arrow left icon"></i>
+        Back
+    </a>
+    <button type="submit" class="ui submit primary button">
+        <i class="check icon"></i>
+        Save
+    </button>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

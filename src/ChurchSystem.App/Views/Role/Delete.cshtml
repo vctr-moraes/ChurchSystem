@@ -1,35 +1,14 @@
 ﻿@model ChurchSystem.App.ViewsModels.RoleViewModel
 
-<style>
-    [data-position="right center"][data-tooltip]:after{
-        color: red;
-        font-weight: bold;
-    }
-</style>
-
 @{
     ViewData["Title"] = "Delete role";
 }
 
-<h3 class="ui header">
-    <i class="wpforms icon"></i>
-    Delete role
-</h3>
+<h3 class="ui header">Delete role</h3>
 
 <div class="ui divider"></div>
 
-<div class="ui segment">
-    <div class="ui relaxed divided list">
-        <div class = "item">
-            <div class="content">
-                <div class="header">
-                    @Html.DisplayNameFor(model => model.Description)
-                </div>
-                @Html.DisplayFor(model => model.Description)
-            </div>
-        </div>
-    </div>
-</div>
+@{ await Html.RenderPartialAsync("_RoleDetailsPartial.cshtml"); }
 
 <form asp-action="Delete">
     <input type="hidden" asp-for="Id" />

@@ -1,28 +1,14 @@
 ﻿@model ChurchSystem.App.ViewsModels.RoleViewModel
 
 @{
-    ViewData["Title"] = "Role Details";
+    ViewData["Title"] = "Role details";
 }
 
-<h3 class="ui header">
-    <i class="wpforms icon"></i>
-    Role details
-</h3>
+<h3 class="ui header">Role details</h3>
 
 <div class="ui divider"></div>
 
-<div class="ui segment">
-    <div class="ui relaxed divided list">
-        <div class = "item">
-            <div class="content">
-                <div class="header">
-                    @Html.DisplayNameFor(model => model.Description)
-                </div>
-                @Html.DisplayFor(model => model.Description)
-            </div>
-        </div>
-    </div>
-</div>
+@{ await Html.RenderPartialAsync("_RoleDetailsPartial.cshtml"); }
 
 <a class="ui button" asp-action="Index">
     <i class="arrow left icon"></i>

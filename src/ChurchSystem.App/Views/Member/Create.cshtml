@@ -4,13 +4,11 @@
     ViewData["Title"] = "Create new member";
 }
 
-<h3 class="ui header">
-    <i class="user outline icon"></i>
-    Create new member
-</h3>
+<h3 class="ui header">Create new member</h3>
 
 <div class="ui divider"></div>
 <partial name="/Views/Components/_ValidationSummary.cshtml" />
+
 <form asp-action="Create" class="ui form segment">
     @{ await Html.RenderPartialAsync("_MemberFormPartial.cshtml"); }
     <a class="ui button" asp-action="Index">

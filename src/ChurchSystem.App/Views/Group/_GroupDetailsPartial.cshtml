@@ -1,0 +1,14 @@
+@model ChurchSystem.App.ViewsModels.GroupViewModel
+
+<div class="ui segment">
+    <div class="ui relaxed divided list">
+        <div class = "item">
+            <div class="content">
+                <div class="header">
+                    @Html.DisplayNameFor(model => model.Description)
+                </div>
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+    </div>
+</div>

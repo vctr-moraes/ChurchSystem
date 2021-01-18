@@ -4,24 +4,13 @@
     ViewData["Title"] = "Create new group";
 }
 
-<h3 class="ui header">
-    <i class="users icon"></i>
-    Create new group
-</h3>
+<h3 class="ui header">Create new group</h3>
 
 <div class="ui divider"></div>
 <partial name="/Views/Components/_ValidationSummary.cshtml" />
+
 <form asp-action="Create" class="ui form segment">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="field">
-        <div class="two fields">
-            <div class="field">
-                <label asp-for="Description" class=""></label>
-                <input asp-for="Description" class="" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </div>
-    </div>
+    @{ await Html.RenderPartialAsync("_GroupFormPartial.cshtml"); }
     <a class="ui button" asp-action="Index">
         <i class="arrow left icon"></i>
         Back
