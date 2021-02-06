@@ -15,7 +15,7 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<Role> GetRole(Guid id)
         {
-            return await Db.ListRoles.FirstOrDefaultAsync(r => r.Id == id);
+            return await Db.ListRoles.AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
         }
 
         public List<Role> GetRoles()

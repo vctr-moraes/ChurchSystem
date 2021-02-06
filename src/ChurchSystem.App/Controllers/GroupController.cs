@@ -18,7 +18,11 @@ namespace ChurchSystem.App.Controllers
         {
             _groupRepository = groupRepository;
             _mapper = mapper;
+            GroupVM = new GroupViewModel();
         }
+
+        [BindProperty]
+        public GroupViewModel GroupVM { get; set; }
 
         // GET: Group
         public async Task<IActionResult> Index()
@@ -29,14 +33,13 @@ namespace ChurchSystem.App.Controllers
         // GET: Group/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
-            GroupViewModel groupViewModel = await GetGroup(id);
+            Group group = await _groupRepository.GetGroup(id);
 
-            if (groupViewModel == null)
-            {
+            if (group == null)
                 return NotFound();
-            }
 
-            return View(groupViewModel);
+            GroupVM = new GroupViewModel(group);
+            return View(GroupVM);
         }
 
         // GET: Group/Create
@@ -51,27 +54,36 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Create(GroupViewModel groupViewModel)
         {
             if (!ModelState.IsValid)
-            {
                 return View(groupViewModel);
+
+            Group group = new Group
+            {
+                Description = groupViewModel.Description
+            };
+
+            try
+            {
+                await _groupRepository.CreateEntity(group);
+                return RedirectToAction("Index");
             }
-
-            Group group = _mapper.Map<Group>(groupViewModel);
-            await _groupRepository.CreateEntity(group);
-
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                GroupVM = new GroupViewModel(group);
+                return View(GroupVM);
+            }
         }
 
         // GET: Group/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
-            GroupViewModel groupViewModel = await GetGroup(id);
+            Group group = await _groupRepository.GetGroup(id);
 
-            if (groupViewModel == null)
-            {
+            if (group == null)
                 return NotFound();
-            }
 
-            return View(groupViewModel);
+            GroupVM = new GroupViewModel(group);
+            return View(GroupVM);
         }
 
         // POST: Group/Edit/5
@@ -80,29 +92,37 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Edit(Guid id, GroupViewModel groupViewModel)
         {
             if (id != groupViewModel.Id)
-            {
                 return NotFound();
+
+            if (!ModelState.IsValid)
+                return View(groupViewModel);
+
+            Group group = await _groupRepository.GetGroup(id);
+            group.Description = groupViewModel.Description;
+
+            try
+            {
+                await _groupRepository.UpdateEntity(group);
+                return RedirectToAction("Index");
             }
-
-            GroupViewModel groupViewModelUpdate = await GetGroup(id);
-            groupViewModelUpdate.Description = groupViewModel.Description;
-
-            await _groupRepository.UpdateEntity(_mapper.Map<Group>(groupViewModelUpdate));
-
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                GroupVM = new GroupViewModel(group);
+                return View(GroupVM);
+            }
         }
 
         // GET: Group/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
-            GroupViewModel groupViewModel = await GetGroup(id);
+            Group group = await _groupRepository.GetGroup(id);
 
-            if (groupViewModel == null)
-            {
+            if (group == null)
                 return NotFound();
-            }
 
-            return View(groupViewModel);
+            GroupVM = new GroupViewModel(group);
+            return View(GroupVM);
         }
 
         // POST: Group/Delete/5
@@ -110,23 +130,23 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            GroupViewModel groupViewModel = await GetGroup(id);
+            Group group = await _groupRepository.GetGroup(id);
 
-            if (groupViewModel == null)
-            {
+            if (group == null)
                 return NotFound();
+
+            try
+            {
+                await _groupRepository.DeleteEntity(id);
+                TempData["Success"] = "Group successfully deleted!";
+                return RedirectToAction("Index");
             }
-
-            await _groupRepository.DeleteEntity(id);
-
-            TempData["Success"] = "Group successfully deleted!";
-
-            return RedirectToAction("Index");
-        }
-
-        private async Task<GroupViewModel> GetGroup(Guid id)
-        {
-            return _mapper.Map<GroupViewModel>(await _groupRepository.GetEntityById(id));
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                GroupVM = new GroupViewModel(group);
+                return View(GroupVM);
+            }
         }
     }
 }

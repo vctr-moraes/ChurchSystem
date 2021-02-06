@@ -15,7 +15,7 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<Group> GetGroup(Guid id)
         {
-            return await Db.Groups.Include(g => g.Members).FirstOrDefaultAsync(g => g.Id == id);
+            return await Db.Groups.AsNoTracking().FirstOrDefaultAsync(g => g.Id == id);
         }
 
         public List<Group> GetGroups()

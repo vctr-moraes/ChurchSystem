@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ChurchSystem.App.ViewsModels;
 using ChurchSystem.Business.Interfaces;
-using AutoMapper;
 using ChurchSystem.Business.Models;
+using AutoMapper;
 
 namespace ChurchSystem.App.Controllers
 {
