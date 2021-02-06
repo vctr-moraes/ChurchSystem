@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using ChurchSystem.Business.Models;
 
 namespace ChurchSystem.App.ViewsModels
 {
     public class RoleViewModel
     {
+        public RoleViewModel() { }
+
+        public RoleViewModel(Role role)
+        {
+            Id = role.Id;
+            Description = role.Description;
+        }
+
         [Key]
         public Guid Id { get; set; }
 

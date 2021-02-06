@@ -8,6 +8,7 @@
 
 <div class="ui divider"></div>
 
+<partial name="/Views/Components/_ValidationSummary.cshtml" />
 @{ await Html.RenderPartialAsync("_RoleDetailsPartial.cshtml"); }
 
 <form asp-action="Delete">

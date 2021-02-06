@@ -50,9 +50,7 @@ namespace ChurchSystem.App.Controllers
             Member member = await _memberRepository.GetMember(id);
 
             if (member == null)
-            {
                 return NotFound();
-            }
 
             MemberVM = new MemberViewModel(member);
             return View(MemberVM);
@@ -71,9 +69,7 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Create(MemberViewModel memberViewModel)
         {
             if (!ModelState.IsValid)
-            {
                 return View(memberViewModel);
-            }
 
             Member member = new Member
             {
@@ -121,9 +117,7 @@ namespace ChurchSystem.App.Controllers
             Member member = await _memberRepository.GetMember(id);
 
             if (member == null)
-            {
                 return NotFound();
-            }
 
             MemberVM = new MemberViewModel(member);
             InitializeMember();
@@ -136,14 +130,10 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Edit(Guid id, MemberViewModel memberViewModel)
         {
             if (id != memberViewModel.Id)
-            {
                 return NotFound();
-            }
 
             if (!ModelState.IsValid)
-            {
                 return View(memberViewModel);
-            }
 
             Member member = await _memberRepository.GetMember(id);
 
@@ -191,9 +181,7 @@ namespace ChurchSystem.App.Controllers
             Member member = await _memberRepository.GetMember(id);
 
             if (member == null)
-            {
                 return NotFound();
-            }
 
             MemberVM = new MemberViewModel(member);
             return View(MemberVM);
@@ -207,9 +195,7 @@ namespace ChurchSystem.App.Controllers
             Member member = await _memberRepository.GetMember(id);
 
             if (member == null)
-            {
                 return NotFound();
-            }
 
             try
             {

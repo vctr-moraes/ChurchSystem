@@ -13,6 +13,11 @@ namespace ChurchSystem.Data.Repository
     {
         public RoleRepository(ChurchSystemDbContext context) : base(context) { }
 
+        public async Task<Role> GetRole(Guid id)
+        {
+            return await Db.ListRoles.FirstOrDefaultAsync(r => r.Id == id);
+        }
+
         public List<Role> GetRoles()
         {
             return Db.ListRoles.ToList();
