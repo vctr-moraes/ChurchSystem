@@ -38,14 +38,13 @@ namespace ChurchSystem.App.Controllers
         // GET: Donation/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
-            DonationViewModel donationViewModel = await GetDonation(id);
+            Donation donation = await _donationRepository.GetDonation(id);
 
-            if (donationViewModel == null)
-            {
+            if (donation == null)
                 return NotFound();
-            }
 
-            return View(donationViewModel);
+            DonationVM = new DonationViewModel(donation);
+            return View(DonationVM);
         }
 
         // GET: Donation/Create
@@ -61,9 +60,7 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Create(DonationViewModel donationViewModel)
         {
             if (!ModelState.IsValid)
-            {
                 return View(donationViewModel);
-            }
 
             Donation donation = new Donation
             {
@@ -90,14 +87,14 @@ namespace ChurchSystem.App.Controllers
         // GET: Donation/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
-            DonationViewModel donationViewModel = await GetDonation(id);
+            Donation donation = await _donationRepository.GetDonation(id);
 
-            if (donationViewModel == null)
-            {
+            if (donation == null)
                 return NotFound();
-            }
 
-            return View(donationViewModel);
+            DonationVM = new DonationViewModel(donation);
+            InitializeDonation();
+            return View(DonationVM);
         }
 
         // POST: Donation/Edit/5
@@ -106,37 +103,43 @@ namespace ChurchSystem.App.Controllers
         public async Task<IActionResult> Edit(Guid id, DonationViewModel donationViewModel)
         {
             if (id != donationViewModel.Id)
-            {
                 return NotFound();
-            }
-
-            DonationViewModel donationViewModelUpdate = await GetDonation(id);
-            donationViewModel.Member = donationViewModelUpdate.Member;
 
             if (!ModelState.IsValid)
-            {
                 return View(donationViewModel);
+
+            Donation donation = await _donationRepository.GetDonation(id);
+
+            donation.Amount = donationViewModel.Amount;
+            donation.Date = donationViewModel.Date;
+            donation.Member = await _memberRepository.GetMember(donationViewModel.MemberId);
+            donation.MemberId = donationViewModel.MemberId;
+            donation.Type = (DonationType)donationViewModel.Type;
+
+            try
+            {
+                await _donationRepository.UpdateEntity(donation);
+                return RedirectToAction("Index");
             }
-
-            donationViewModelUpdate.Date = donationViewModel.Date;
-            donationViewModelUpdate.Amount = donationViewModel.Amount;
-            donationViewModelUpdate.Type = donationViewModel.Type;
-
-            await _donationRepository.UpdateEntity(_mapper.Map<Donation>(donationViewModelUpdate));
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                /* DonationVM = new DonationViewModel(donation); */
+                InitializeDonation();
+                return View(DonationVM);
+            }
         }
 
         // GET: Donation/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
-            DonationViewModel donationViewModel = await GetDonation(id);
+            Donation donation = await _donationRepository.GetDonation(id);
 
-            if (donationViewModel == null)
-            {
+            if (donation == null)
                 return NotFound();
-            }
 
-            return View(donationViewModel);
+            DonationVM = new DonationViewModel(donation);
+            return View(DonationVM);
         }
 
         // POST: Donation/Delete/5
@@ -144,31 +147,23 @@ namespace ChurchSystem.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            DonationViewModel donationViewModel = await GetDonation(id);
+            Donation donation = await _donationRepository.GetDonation(id);
 
-            if (donationViewModel == null)
-            {
+            if (donation == null)
                 return NotFound();
+
+            try
+            {
+                await _donationRepository.DeleteEntity(id);
+                TempData["Success"] = "Donation successfully deleted!";
+                return RedirectToAction("Index");
             }
-
-            await _donationRepository.DeleteEntity(id);
-
-            TempData["Success"] = "Donation successfully deleted!";
-
-            return RedirectToAction("Index");
-        }
-
-        private async Task<DonationViewModel> GetDonation(Guid id)
-        {
-            DonationViewModel donationViewModel = _mapper.Map<DonationViewModel>(await _donationRepository.GetEntityById(id));
-            //donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
-            return donationViewModel;
-        }
-
-        private async Task<DonationViewModel> GetMembers(DonationViewModel donationViewModel)
-        {
-            //donationViewModel.Members = _mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities());
-            return donationViewModel;
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                DonationVM = new DonationViewModel(donation);
+                return View(DonationVM);
+            }
         }
 
         private void InitializeDonation()

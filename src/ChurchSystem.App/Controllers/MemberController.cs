@@ -200,6 +200,7 @@ namespace ChurchSystem.App.Controllers
             try
             {
                 await _memberRepository.DeleteEntity(id);
+                TempData["Success"] = "Donation successfully deleted!";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
