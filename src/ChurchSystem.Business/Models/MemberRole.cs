@@ -11,7 +11,7 @@ namespace ChurchSystem.Business.Models
             Role = role;
             RoleId = role.Id;
             Member = member;
-            MemberId = MemberId;
+            MemberId = member.Id;
         }
 
         public Guid MemberId { get; set; }

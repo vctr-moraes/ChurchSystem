@@ -36,15 +36,11 @@ namespace ChurchSystem.App.Controllers
         [BindProperty]
         public List<MemberViewModel> Members { get; set; }
 
-        // GET: Members
         public async Task<IActionResult> Index()
         {
-            //Members = await _memberRepository.GetEntities().Select(member => new MemberViewModel(member)).ToList();
-
             return View(_mapper.Map<IEnumerable<MemberViewModel>>(await _memberRepository.GetEntities()));
         }
 
-        // GET: Member/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
             Member member = await _memberRepository.GetMember(id);
@@ -56,14 +52,12 @@ namespace ChurchSystem.App.Controllers
             return View(MemberVM);
         }
 
-        // GET: Member/Create
         public IActionResult Create()
         {
             InitializeMember();
             return View(MemberVM);
         }
 
-        // POST: Member/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MemberViewModel memberViewModel)
@@ -111,7 +105,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: Member/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
             Member member = await _memberRepository.GetMember(id);
@@ -124,7 +117,6 @@ namespace ChurchSystem.App.Controllers
             return View(MemberVM);
         }
 
-        // POST: Member/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, MemberViewModel memberViewModel)
@@ -175,7 +167,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: Member/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
             Member member = await _memberRepository.GetMember(id);
@@ -187,12 +178,11 @@ namespace ChurchSystem.App.Controllers
             return View(MemberVM);
         }
 
-        // POST: Member/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            Member member = await _memberRepository.GetMember(id);
+            Member member = await _memberRepository.GetMemberAsNoTracking(id);
 
             if (member == null)
                 return NotFound();

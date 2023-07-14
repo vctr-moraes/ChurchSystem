@@ -24,13 +24,11 @@ namespace ChurchSystem.App.Controllers
         [BindProperty]
         public GroupViewModel GroupVM { get; set; }
 
-        // GET: Group
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<GroupViewModel>>(await _groupRepository.GetEntities()));
         }
 
-        // GET: Group/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
             Group group = await _groupRepository.GetGroup(id);
@@ -42,13 +40,11 @@ namespace ChurchSystem.App.Controllers
             return View(GroupVM);
         }
 
-        // GET: Group/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Group/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(GroupViewModel groupViewModel)
@@ -74,7 +70,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: Group/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
             Group group = await _groupRepository.GetGroup(id);
@@ -86,7 +81,6 @@ namespace ChurchSystem.App.Controllers
             return View(GroupVM);
         }
 
-        // POST: Group/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, GroupViewModel groupViewModel)
@@ -113,7 +107,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: Group/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
             Group group = await _groupRepository.GetGroup(id);
@@ -125,12 +118,11 @@ namespace ChurchSystem.App.Controllers
             return View(GroupVM);
         }
 
-        // POST: Group/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            Group group = await _groupRepository.GetGroup(id);
+            Group group = await _groupRepository.GetGroupAsNoTracking(id);
 
             if (group == null)
                 return NotFound();

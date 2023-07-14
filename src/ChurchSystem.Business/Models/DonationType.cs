@@ -2,7 +2,7 @@
 {
     public enum DonationType
     {
-        Dizimo = 1,
-        Doacao = 2
+        Donation = 1,
+        Tithing = 2
     }
 }

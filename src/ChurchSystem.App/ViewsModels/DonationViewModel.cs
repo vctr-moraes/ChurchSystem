@@ -15,9 +15,10 @@ namespace ChurchSystem.App.ViewsModels
             Id = donation.Id;
             Date = donation.Date;
             Amount = donation.Amount;
-            DonationType = (DonationTypeViewModel)donation.Type;
+            Type = (DonationTypeViewModel)donation.Type;
             MemberId = donation.MemberId;
             Member = new MemberViewModel(donation.Member);
+            MemberName = donation.Member.Name;
         }
 
         [Key]
@@ -26,7 +27,7 @@ namespace ChurchSystem.App.ViewsModels
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "The {0} field is required.")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         
         [Display(Name = "Amount")]
         [DataType(DataType.Currency)]
@@ -35,19 +36,16 @@ namespace ChurchSystem.App.ViewsModels
 
         [Display(Name = "Type")]
         [Required(ErrorMessage = "The {0} field is required.")]
-        public int Type { get; set; }
-
-        [Display(Name = "Type")]
-        [Required(ErrorMessage = "The {0} field is required.")]
-        public DonationTypeViewModel DonationType { get; set; }
+        public DonationTypeViewModel Type { get; set; }
 
         [Display(Name = "Member")]
         [Required(ErrorMessage = "The {0} field is required.")]
         public Guid MemberId { get; set; }
 
         public MemberViewModel Member { get; set; }
-        
-        //public IEnumerable<MemberViewModel> Members { get; set; }
+
+        [Display(Name = "Member name")]
+        public string MemberName { get; set; }
 
         public IEnumerable<SelectListItem> Members { get; set; }
     }

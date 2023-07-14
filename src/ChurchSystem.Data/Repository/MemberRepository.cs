@@ -15,8 +15,20 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<Member> GetMember(Guid id)
         {
-            return await Db.Members.AsNoTracking()
+            return await Db.Members
+                .Include(m => m.MemberGroups)
                 .Include("MemberGroups.Group")
+                .Include(m => m.MemberRoles)
+                .Include("MemberRoles.Role")
+                .FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task<Member> GetMemberAsNoTracking(Guid id)
+        {
+            return await Db.Members.AsNoTracking()
+                .Include(m => m.MemberGroups)
+                .Include("MemberGroups.Group")
+                .Include(m => m.MemberRoles)
                 .Include("MemberRoles.Role")
                 .FirstOrDefaultAsync(m => m.Id == id);
         }

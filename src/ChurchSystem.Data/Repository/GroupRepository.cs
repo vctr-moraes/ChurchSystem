@@ -15,6 +15,11 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<Group> GetGroup(Guid id)
         {
+            return await Db.Groups.FirstOrDefaultAsync(g => g.Id == id);
+        }
+
+        public async Task<Group> GetGroupAsNoTracking(Guid id)
+        {
             return await Db.Groups.AsNoTracking().FirstOrDefaultAsync(g => g.Id == id);
         }
 
@@ -25,7 +30,7 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<List<Group>> GetGroupsById(Guid[] groupsIds)
         {
-            List<Group> groups = await Db.Groups.AsNoTracking().ToListAsync();
+            List<Group> groups = await Db.Groups.ToListAsync();
 
             if (groupsIds != null)
             {

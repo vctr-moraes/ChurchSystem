@@ -28,14 +28,12 @@ namespace ChurchSystem.App.Controllers
         [BindProperty]
         public DonationViewModel DonationVM { get; set; }
 
-        // GET: Donation
         public IActionResult Index()
         {
             var teste = _donationRepository.GetDonations();
             return View(_mapper.Map<IEnumerable<DonationViewModel>>(teste));
         }
 
-        // GET: Donation/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
             Donation donation = await _donationRepository.GetDonation(id);
@@ -47,14 +45,12 @@ namespace ChurchSystem.App.Controllers
             return View(DonationVM);
         }
 
-        // GET: Donation/Create
         public IActionResult Create()
         {
             InitializeDonation();
             return View(DonationVM);
         }
 
-        // POST: Donation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DonationViewModel donationViewModel)
@@ -62,13 +58,15 @@ namespace ChurchSystem.App.Controllers
             if (!ModelState.IsValid)
                 return View(donationViewModel);
 
+            Member member = await _memberRepository.GetMember(donationViewModel.MemberId);
+
             Donation donation = new Donation
             {
                 Amount = donationViewModel.Amount,
-                Type = (DonationType)donationViewModel.DonationType,
+                Type = (DonationType)donationViewModel.Type,
                 Date = donationViewModel.Date,
-                Member = await _memberRepository.GetMember(donationViewModel.MemberId),
-                MemberId = donationViewModel.MemberId
+                Member = member,
+                MemberId = member.Id
             };
 
             try
@@ -84,7 +82,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: Donation/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
             Donation donation = await _donationRepository.GetDonation(id);
@@ -97,7 +94,6 @@ namespace ChurchSystem.App.Controllers
             return View(DonationVM);
         }
 
-        // POST: Donation/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, DonationViewModel donationViewModel)
@@ -109,11 +105,12 @@ namespace ChurchSystem.App.Controllers
                 return View(donationViewModel);
 
             Donation donation = await _donationRepository.GetDonation(id);
+            Member member = await _memberRepository.GetMember(donationViewModel.MemberId);
 
             donation.Amount = donationViewModel.Amount;
             donation.Date = donationViewModel.Date;
-            donation.Member = await _memberRepository.GetMember(donationViewModel.MemberId);
-            donation.MemberId = donationViewModel.MemberId;
+            donation.Member = member;
+            donation.MemberId = member.Id;
             donation.Type = (DonationType)donationViewModel.Type;
 
             try
@@ -124,13 +121,11 @@ namespace ChurchSystem.App.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
-                /* DonationVM = new DonationViewModel(donation); */
                 InitializeDonation();
                 return View(DonationVM);
             }
         }
 
-        // GET: Donation/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
             Donation donation = await _donationRepository.GetDonation(id);
@@ -142,12 +137,11 @@ namespace ChurchSystem.App.Controllers
             return View(DonationVM);
         }
 
-        // POST: Donation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            Donation donation = await _donationRepository.GetDonation(id);
+            Donation donation = await _donationRepository.GetDonationAsNoTracking(id);
 
             if (donation == null)
                 return NotFound();

@@ -15,14 +15,21 @@ namespace ChurchSystem.Data.Repository
 
         public async Task<Donation> GetDonation(Guid id)
         {
+            return await Db.Donations
+                .Include(d => d.Member)
+                .FirstOrDefaultAsync(d => d.Id == id);
+        }
+
+        public async Task<Donation> GetDonationAsNoTracking(Guid id)
+        {
             return await Db.Donations.AsNoTracking()
-                .Include("Donation.Member")
+                .Include(d => d.Member)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
 
         public List<Donation> GetDonations()
         {
-            return Db.Donations.ToList();
+            return Db.Donations.Include(d => d.Member).ToList();
         }
     }
 }

@@ -24,13 +24,11 @@ namespace ChurchSystem.App.Controllers
         [BindProperty]
         public RoleViewModel RoleVM { get; set; }
 
-        // GET: RoleViewModels
         public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<RoleViewModel>>(await _roleRepository.GetEntities()));
         }
 
-        // GET: RoleViewModels/Details/5
         public async Task<IActionResult> Details(Guid id)
         {
             Role role = await _roleRepository.GetRole(id);
@@ -42,13 +40,11 @@ namespace ChurchSystem.App.Controllers
             return View(RoleVM);
         }
 
-        // GET: RoleViewModels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: RoleViewModels/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoleViewModel roleViewModel)
@@ -74,7 +70,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: RoleViewModels/Edit/5
         public async Task<IActionResult> Edit(Guid id)
         {
             Role role = await _roleRepository.GetRole(id);
@@ -86,7 +81,6 @@ namespace ChurchSystem.App.Controllers
             return View(RoleVM);
         }
 
-        // POST: RoleViewModels/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, RoleViewModel roleViewModel)
@@ -113,7 +107,6 @@ namespace ChurchSystem.App.Controllers
             }
         }
 
-        // GET: RoleViewModels/Delete/5
         public async Task<IActionResult> Delete(Guid id)
         {
             Role role = await _roleRepository.GetRole(id);
@@ -125,12 +118,11 @@ namespace ChurchSystem.App.Controllers
             return View(RoleVM);
         }
 
-        // POST: RoleViewModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            Role role = await _roleRepository.GetRole(id);
+            Role role = await _roleRepository.GetRoleAsNoTracking(id);
 
             if (role == null)
                 return NotFound();
