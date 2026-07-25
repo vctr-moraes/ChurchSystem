@@ -48,6 +48,8 @@ namespace ChurchSystem.App.Controllers
         public IActionResult Create()
         {
             InitializeDonation();
+            DonationVM.Date = DateTime.Now;
+
             return View(DonationVM);
         }
 
